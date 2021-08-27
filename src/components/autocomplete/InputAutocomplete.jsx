@@ -2,9 +2,10 @@ import React,{ useState} from 'react'
 import useActions from '../../hooks/useActions';
 import  './input.css'
 
-export default function InputAutocomplete() {
+export default function InputAutocomplete({handleClick}) {
     const [text, setText] = useState('')
     const [suggestion, setSuggestion] = useState([])
+    // const selectedAction = null
     
     const {acciones} = useActions()
     // console.log(acciones);
@@ -12,6 +13,7 @@ export default function InputAutocomplete() {
        setSuggestion(acciones.filter(item => item.name.toLowerCase().includes(text.toLowerCase())))
        setText(text)
     }
+
     return (
         <div className="mx-5 input-container">
             <input 
@@ -21,7 +23,7 @@ export default function InputAutocomplete() {
             />
             <div className="options-container" >
             { suggestion.map((item, i) =>(
-                <p key={i}> { item.name }</p>   
+                <button className="btn btn-link text-black w-100" key={i} onClick={() => handleClick(item)} > { item.name }</button>   
             ))}
             </div>
         </div>

@@ -37,10 +37,36 @@ export function useGetBDActions (id_User) {
         }
         getData()
         return () => { isMounted = false };
-    }, [id_User])
+    }, [acciones, id_User])
     return {
         acciones: acciones
     }
 }
+
+export function useInsertBDActions ({nombre, moneda, simbolo, id_User}) {
+    const [acciones, setAcciones] = useState(null)
+    useEffect(() => {
+        let isMounted = true;
+        const getData = async () => {
+            const res = await axios.post("http://localhost:8080/actionsByUser", {
+                        params: {
+                          nombre: nombre,
+                          moneda: moneda,
+                          simbolo: simbolo,
+                          id_user: id_User
+                         }
+            })
+            const data = await res.data
+            if(isMounted) setAcciones(data)
+        }
+        getData()
+        return () => { isMounted = false };
+    }, [nombre, moneda, simbolo, id_User])
+    return {
+        acciones: acciones
+    }
+}
+
+
 
 

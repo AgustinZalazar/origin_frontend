@@ -1,10 +1,14 @@
 import Header from '../../components/header/Header'
 import  InputAutocomplete from '../../components/autocomplete/InputAutocomplete';
-import useActions, {useGetBDActions }  from '../../hooks/useActions';
+import useActions, {useGetBDActions, useInsertBDActions }  from '../../hooks/useActions';
 
-export const Dashboard = () => {
+export default function Dashboard () {
     const {loading} = useActions()
     const { acciones }  = useGetBDActions(1)
+    const HandleClick = (e) =>{
+        useInsertBDActions(e)
+    }
+
     return (
         <>
             <Header title="Mis acciones" />
@@ -16,8 +20,8 @@ export const Dashboard = () => {
                 <>
                     <div className="d-flex flex-row py-5">
                         <h3>Simbolo</h3>
-                        <InputAutocomplete/>
-                        <button type="button" className="btn btn-dark me-2">Agregar Simbolo</button>
+                        <InputAutocomplete handleClick={ HandleClick }/>
+                        <button type="button" className="btn btn-dark me-2" onClick={HandleClick}>Agregar Simbolo</button>
                     </div>
             
                     <table className="table">

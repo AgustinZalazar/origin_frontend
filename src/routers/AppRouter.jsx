@@ -5,7 +5,7 @@ import {
     Switch
 } from "react-router-dom";
 import { Login } from '../pages/login/Login';
-import { Dashboard } from '../pages/dashboard/dashboard';
+import  Dashboard  from '../pages/dashboard/dashboard';
 
 export const AppRouter = () => {
     return (
