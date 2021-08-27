@@ -5,7 +5,7 @@ export default function login({username, password}) {
         username: username,
         password: password
     }).then((res) => {
-        console.log(res)
+        // console.log(res)
         if(res.statusText !== 'OK') throw new Error('Response is not OK')
         return res.data
     }).then(res => {

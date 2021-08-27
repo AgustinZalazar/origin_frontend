@@ -9,7 +9,7 @@ export default  function useUser(){
     const login = useCallback(({username, password}) => {
         loginService({username, password})
         .then(token => {
-            console.log(token);
+            // console.log(token);
             setToken(token)
         })
         .catch(err => {
