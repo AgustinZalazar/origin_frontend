@@ -7,7 +7,7 @@ function Header({ title }) {
     const { logout, isLogged } = useUser();
     let history = useHistory()
     useEffect(() => {
-        if (!isLogged) history.push("/")
+        if (isLogged) history.push("/")
     }, [isLogged,history])
 
     const handleLogout = (e) =>{

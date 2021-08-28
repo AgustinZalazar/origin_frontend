@@ -5,11 +5,14 @@ export default function login({username, password}) {
         username: username,
         password: password
     }).then((res) => {
-        // console.log(res)
         if(res.statusText !== 'OK') throw new Error('Response is not OK')
         return res.data
     }).then(res => {
-        const { token } = res
-        return token
+        const { token, id_user } = res
+        // console.log(res, res.id_user);
+        return {
+            token,
+            id_user
+        }
     })
 }

@@ -1,12 +1,26 @@
 import Header from '../../components/header/Header'
 import  InputAutocomplete from '../../components/autocomplete/InputAutocomplete';
-import useActions, {useGetBDActions, useInsertBDActions }  from '../../hooks/useActions';
+import useActions, {useGetBDActions }  from '../../hooks/useActions';
+import { GetAcciones } from '../../services/acciones';
+// import useUser from '../../hooks/useUser';
 
 export default function Dashboard () {
     const {loading} = useActions()
+    // const {id_User} = useUser()
+    // console.log(id_User);
     const { acciones }  = useGetBDActions(1)
-    const HandleClick = (e) =>{
-        useInsertBDActions(e)
+    let item = null;
+    const HandleOnClick = (e) =>{
+        item  = e;
+    }
+
+    const sendData = (item) =>{
+        GetAcciones({
+            nombre: item.name,
+            moneda: item.currency,
+            simbolo: item.symbol,
+            id_user: 1
+        })
     }
 
     return (
@@ -20,8 +34,8 @@ export default function Dashboard () {
                 <>
                     <div className="d-flex flex-row py-5">
                         <h3>Simbolo</h3>
-                        <InputAutocomplete handleClick={ HandleClick }/>
-                        <button type="button" className="btn btn-dark me-2" onClick={HandleClick}>Agregar Simbolo</button>
+                        <InputAutocomplete handleClick={ HandleOnClick }/>
+                        <button type="button" className="btn btn-dark me-2" onClick={() => sendData(item)}>Agregar Simbolo</button>
                     </div>
             
                     <table className="table">

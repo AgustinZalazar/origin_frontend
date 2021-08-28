@@ -5,10 +5,8 @@ import  './input.css'
 export default function InputAutocomplete({handleClick}) {
     const [text, setText] = useState('')
     const [suggestion, setSuggestion] = useState([])
-    // const selectedAction = null
     
     const {acciones} = useActions()
-    // console.log(acciones);
     const handleOnchange = (text) => {
        setSuggestion(acciones.filter(item => item.name.toLowerCase().includes(text.toLowerCase())))
        setText(text)

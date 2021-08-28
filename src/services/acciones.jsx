@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useState} from 'react'
 
-export default function Acciones() {
-    const [Data, setData] = useState([])
-    return axios.get("https://api.twelvedata.com/stocks?source=docs&exchange=NYSE")
-    .then((res) => {
-        console.log(res)
-        setData(res.data)
-        if(res.statusText !== 'OK') throw new Error('Response is not OK')
-        return Data
-    })
+export const GetAcciones = async ({nombre,moneda,simbolo,id_user}) =>  {
+        const res = await axios.post("http://localhost:8080/actionByUser", {
+            nombre,
+            moneda,
+            simbolo,
+            id_user
+        })
+    const data = await res.data
+    console.log(data);
+    return data;
 }
