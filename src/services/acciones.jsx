@@ -11,3 +11,14 @@ export const GetAcciones = async ({nombre,moneda,simbolo,id_user}) =>  {
     console.log(data);
     return data;
 }
+
+export const DeleteAccion = async (id_accion) =>  {
+    const res = await axios.delete("http://localhost:8080/actionByUser", {
+        params: {
+            id_acciones : id_accion
+        }
+    })
+    const response = await res
+    console.log(response);
+    return response;
+}

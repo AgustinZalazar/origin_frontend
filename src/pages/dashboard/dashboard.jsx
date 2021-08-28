@@ -1,7 +1,7 @@
 import Header from '../../components/header/Header'
 import  InputAutocomplete from '../../components/autocomplete/InputAutocomplete';
 import useActions, {useGetBDActions }  from '../../hooks/useActions';
-import { GetAcciones } from '../../services/acciones';
+import { GetAcciones , DeleteAccion} from '../../services/acciones';
 // import useUser from '../../hooks/useUser';
 
 export default function Dashboard () {
@@ -54,7 +54,7 @@ export default function Dashboard () {
                                         <th scope="row">{item.simbolo}</th>
                                         <td>{item.nombre}</td>
                                         <td>{item.moneda}</td>
-                                        <td><button className="btn btn-link"> Eliminar</button></td>
+                                        <td><button className="btn btn-link" onClick={()=> DeleteAccion(item.id_acciones)}> Eliminar</button></td>
                                     </tr> 
                                 ))
                             }
