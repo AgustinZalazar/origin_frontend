@@ -7,11 +7,12 @@ import  './login.css'
 export const Login = () =>{
     const [username, setusername] = useState("");
     const [password, setpassword] = useState("");
-    const { login, isLogged } = useUser();
+    const { login, isLogged, error } = useUser();
     let history = useHistory()
 
     useEffect(() => {
-        if (isLogged) history.push("/dashboard")
+        console.log(isLogged);
+        if (isLogged) history.push("/")
     }, [isLogged,history])
 
     const handleSubmit = (e) =>{
@@ -47,6 +48,11 @@ export const Login = () =>{
                         }}/>
                     </div>
                     <button className="btn btn-light w-100">Login</button>
+                    {error&&
+                        <div className="alert alert-danger mt-5" role="alert">
+                            Contraseña o usuarion incorrecto!
+                        </div>
+                    }
                 </form>
             </div>
       </div>

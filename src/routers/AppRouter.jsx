@@ -6,7 +6,8 @@ import {
     Redirect
 } from "react-router-dom";
 import { Login } from '../pages/login/Login';
-import  Dashboard  from '../pages/dashboard/dashboard';
+// import  Dashboard  from '../pages/dashboard/dashboard';
+import {DashboardRoutes} from './DashboardRoutes';
 import useUser from '../hooks/useUser';
 
 export const AppRouter = () => {
@@ -16,8 +17,7 @@ export const AppRouter = () => {
             {isLogged?
                (
                     <Switch>
-                        <Route exact path="/" component={ Dashboard }/>
-                        <Redirect to="/" />
+                        <Route  path="/" component={ DashboardRoutes }/>
                     </Switch>
                 ) 
                 :

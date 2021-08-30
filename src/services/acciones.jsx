@@ -8,7 +8,7 @@ export const GetAcciones = async ({nombre,moneda,simbolo,id_user}) =>  {
             id_user
         })
     const data = await res.data
-    console.log(data);
+    // console.log(data);
     return data;
 }
 

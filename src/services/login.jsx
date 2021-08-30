@@ -12,7 +12,7 @@ export default function login({username, password}) {
         // console.log(res, res.id_user);
         return {
             token,
-            id_user
+            id_user: id_user
         }
     })
 }

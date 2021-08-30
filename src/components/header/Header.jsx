@@ -1,15 +1,10 @@
-import React, { useEffect} from "react";
-import { useHistory } from "react-router-dom";
+// import React, { useEffect} from "react";
+// import { useHistory } from "react-router-dom";
 import useUser from '../../hooks/useUser';
 
 function Header({ title }) {
 
-    const { logout, isLogged } = useUser();
-    let history = useHistory()
-    useEffect(() => {
-        if (isLogged) history.push("/")
-    }, [isLogged,history])
-
+    const { logout } = useUser();
     const handleLogout = (e) =>{
         e.preventDefault();
         logout()

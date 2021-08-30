@@ -1,5 +1,6 @@
 import Header from '../../components/header/Header'
 import  InputAutocomplete from '../../components/autocomplete/InputAutocomplete';
+import {Link} from 'react-router-dom'
 import useActions, {useGetBDActions }  from '../../hooks/useActions';
 import { GetAcciones , DeleteAccion} from '../../services/acciones';
 // import useUser from '../../hooks/useUser';
@@ -52,7 +53,7 @@ export default function Dashboard () {
                                 acciones.map((item, i) =>(
                                     <tr key={ i }>
                                         <th scope="row">{item.simbolo}</th>
-                                        <td>{item.nombre}</td>
+                                        <td><Link to={"/details/" + item.simbolo}> {item.nombre} </Link></td>
                                         <td>{item.moneda}</td>
                                         <td><button className="btn btn-link" onClick={()=> DeleteAccion(item.id_acciones)}> Eliminar</button></td>
                                     </tr> 
